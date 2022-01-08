@@ -1,0 +1,128 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="d-flex justify-content-between d-flex-row bd-highlight mb-3">
+            <div class="p-2 bd-highlight">
+                <select class="btn btn-success" id="form-select" aria-label="default select example">
+                    <option value="">Kategori</option>
+                    <option value="dog">Makanan</option>
+                    <option value="cat">Minuman</option>
+                </select>
+            </div>
+            <!-- Button trigger modal -->
+            <div class="p-2 bd-highlight page">
+                <button type="button" class="btn btn-primary" (click)="open(content)">
+                    tambah
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+
+            <!-- tabell -->
+            <table datatable [dtOptions]="dtOptions" class="table table-hover mobile-optimised mb-0"
+                data-page-length='20' style="width: max-content;">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">NO</th>
+                        <th style="text-align: center;">PRODUK</th>
+                        <th style="text-align: center;">KATEGORI</th>
+                        <th style="text-align: center;">HARGA</th>
+                        <th style="text-align: center;">level</th>
+                        <th style="text-align: center;">toping</th>
+                        <th style="text-align: center;" colspan="2">ACTION</th>
+                    </tr>
+                </thead>
+                <Tbody>
+                    <tr *ngFor="let val of listData;index as i" style="margin-right: 3px;">
+                        <td style="text-align: center;">{{i + 1}}</td>
+                        <td style="text-align: center;">{{val.produk}}</td>
+                        <td style="text-align: center;">{{val.kategori}}</td>
+                        <td style="text-align: center;">{{val.harga}}</td>
+                        <td style="text-align: center;">{{val.level}}</td>
+                        <td style="text-align: center;">{{val.toping}}</td>
+
+                        <td class="row-action">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item">
+                                    <a href="javascript: void(0);" class="mr-2 mb-primary" placement="top"
+                                        ngbTooltip="Edit">
+                                        <i class="fa fa-edit font-size-14 align-middle"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="javascript: void(0);" class="mb-danger" placement="left"
+                                        ngbTooltip="Hapus">
+                                        <i class="fa fa-trash font-size-14 align-middle"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </Tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="dateOfBirth">nama produk</label>
+                <div class="input-group">
+                    <input id="nama_prod" class="form-control" placeholder="nama produk" name="np" ngbDatepicker
+                        #dp="ngbDatepicker">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">kategori</label>
+                <div class="input-group">
+                    <input id="kategori" class="form-control" placeholder=" jenis kategori" name="jk" ngbDatepicker
+                        #dp="ngbDatepicker">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">harga jual</label>
+                <div class="input-group">
+                    <input id="hargajual" class="form-control" placeholder="harga jual" name="hj" ngbDatepicker
+                        #dp="ngbDatepicker">
+                </div>
+                <div class="form-group">
+                    <label for="dateOfBirth">HPP</label>
+                    <div class="input-group">
+                        <input id="hpp" class="form-control" placeholder="" name="hpp" ngbDatepicker
+                            #dp="ngbDatepicker">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dateOfBirth">Foto Produk</label>
+                    <div class="input-group">
+                        <input type="file" id="dateOfBirth" class="form-control" placeholder="masukan file" name="dp"
+                            ngbDatepicker #dp="ngbDatepicker">
+                        <div class="input-group-append">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dateOfBirth">Deskripsi</label>
+                    <div class="col-md-8">
+                        <input type="text" id="dateOfBirth" class="form-control my-100px" style="width: max-content;"
+                            name="dp" ngbDatepicker #dp="ngbDatepicker">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+</ng-template>
